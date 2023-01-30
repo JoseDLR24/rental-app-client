@@ -1,0 +1,10 @@
+nav.navigation-container{
+ display: flex;
+ justify-content: space-evenly;
+ font-size: 20px;
+}
+
+
+.navigation-container a{
+    color: red;
+}

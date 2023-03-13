@@ -7,6 +7,7 @@ const Navigation = () => {
     <nav className="navigation-container">
       <NavLink to="/main">Main</NavLink>
       <NavLink to="/app">App</NavLink>
+      <NavLink to="/oe">OEEEEEEEEEEE</NavLink>
     </nav>
   );
 };

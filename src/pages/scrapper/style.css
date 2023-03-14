@@ -1,0 +1,47 @@
+/* STYLE FOR COMMON COMPONENTS */
+#scrapper div.filter-container, div.advanced-filters, main.scrappertable-container, div.buttons-container {
+    margin: 0 100px;
+}
+
+#scrapper {
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+#scrapper h1 {
+    text-align: center;
+    margin: 20px 100px;
+}
+
+#scrapper div.filter-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #8CC63F;
+    border-radius: 10px;
+    height: 50px;
+}
+
+#scrapper div.filter-container select.form-select {
+    width: auto;
+}
+
+#scrapper table{
+    margin-top: 30px;
+    width: 100%;
+}
+
+/* maring top for buttons container */
+#scrapper div.buttons-container {
+    margin-top: 50px;
+}
+
+#scrapper div.buttons-container button.btn:hover {
+    background-color: #8CC63F;
+    margin: none;
+    color: white;
+}
+
+#scrapper .confirmbtn {
+    background-color: #8CC63F;
+    color: white;
+}

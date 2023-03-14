@@ -1,7 +1,7 @@
 nav.navigation-container{
- display: flex;
- justify-content: space-evenly;
- font-size: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 20px;
 }
 
 

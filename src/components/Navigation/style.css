@@ -1,10 +1,35 @@
-nav.navigation-container{
-    display: flex;
-    justify-content: space-evenly;
-    font-size: 20px;
+#Navigation img{
+    margin-left: 10px;
+    height: 60px;
 }
 
+#Navigation li a{
+    color: black !important;
+    font-family: 'Lexend Deca', sans-serif !important;
+    text-decoration: none;
+    padding-right: 16px;
+}
 
-.navigation-container a{
-    color: red;
+#Navigation #contact-btn{
+    display: none;
+}
+
+@media (max-width: 1000px) {
+    
+    #Navigation div:first-child{
+        flex-direction: row-reverse;
+    }
+
+    #Navigation #contact-btn{
+        display:block;
+        background-color: #bfd732;
+        border-radius: 40px;
+        margin: auto;
+        margin-top: 30px;
+        min-width: 40%;
+    }
+    
+    #Navigation li a{
+        border-bottom: 2px solid gray;
+    }
 }

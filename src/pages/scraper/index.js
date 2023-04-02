@@ -11,7 +11,7 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 
-const Scrapper = () => {
+const Scraper = () => {
     return(
         <div id="scrapper">
             <h1>SCRAPPER</h1>
@@ -22,4 +22,4 @@ const Scrapper = () => {
     );
 };
 
-export default Scrapper;
+export default Scraper;

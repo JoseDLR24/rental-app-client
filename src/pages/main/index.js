@@ -1,12 +1,14 @@
 import React from "react";
 import aboveTheFold from './images/white.png';
-import "./style.css"
+import "./style.css";
 import bgImage from './images/home-bg.jpeg';
+import { Link } from 'react-router-dom';
+
 
 const Main = () => {
   return (
     <section class="above-the-fold container-fluid">
-        <div class="AtF-bg" style={{
+      <div class="AtF-bg" style={{
         backgroundImage: `url(${bgImage})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
@@ -25,9 +27,10 @@ const Main = () => {
         <h1>
           Effortlessly track and analyze local rental markets
         </h1>
-        <button>
-          Learn more
-        </button>
+        <Link to="/about" style={{ textDecoration: 'none' }}>
+          <button>Learn More</button>
+        </Link>
+
       </div>
 
     </section>

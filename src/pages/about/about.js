@@ -21,7 +21,7 @@ const About = () => {
           }}>
             </div>
             <div class="htu-body">
-                <h1>ABOUT THIS APPLICATIOn</h1>
+                <h1>ABOUT THIS APPLICATION</h1>
                 <hr class="pdivider" />
                 <p>Our web app is designed to simplify an automate the collection and organization of rental listing data in Simcoe County. It captures rental ads from multiple websites and saves the information in a database, creating an unique ID for each listing.
                 </p>

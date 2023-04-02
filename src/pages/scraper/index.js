@@ -14,7 +14,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 const Scraper = () => {
     return(
         <div id="scrapper">
-            <h1>SCRAPPER</h1>
+            <h1>SCRAPER</h1>
             <FilterNav/>
             <Table/>
             <ButtonContainer/>

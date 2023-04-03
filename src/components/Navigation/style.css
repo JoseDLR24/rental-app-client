@@ -14,6 +14,10 @@
     display: none;
 }
 
+#Navigation ul{
+    justify-content: flex-end;
+}
+
 @media (max-width: 1000px) {
     
     #Navigation div:first-child{
@@ -28,8 +32,16 @@
         margin-top: 30px;
         min-width: 40%;
     }
+
+    #Navigation div li {
+        width: 100%;
+        padding: 10px;
+    }
     
     #Navigation li a{
         border-bottom: 2px solid gray;
+        width: 100%;
+        display: block;
+        padding: 10px;
     }
 }

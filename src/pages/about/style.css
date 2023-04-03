@@ -1,0 +1,22 @@
+
+.pdivider {
+    border: none;
+    border-top: 5px solid #8CC63F;
+    margin: 20px 0;
+}
+
+.htu-body {
+    width: 50%;
+    margin: 50px 0 0 200px;
+    background: none;
+    color: white;
+}
+.htu-body h1{
+    font-family: 'Lexend Deca', sans-serif;
+    font-weight: 500;
+}
+
+.htu-body p {
+    font-family: 'Lexend Deca', sans-serif;
+    font-weight: 300;
+}

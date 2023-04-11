@@ -1,40 +1,35 @@
-/* main{
-    background-image: url(/img/home-bg.jpeg);
-    background-size: cover; 
-    background-repeat: no-repeat;
-    background-position: center calc(50% - 660px);
-    opacity: 0.8;
-    min-height: 90vh;
-
-} */
-
-/* .above-the-fold{
+  .above-the-fold{
     color: #f0f0f0 !important;
     font-family: 'Lexend Deca', sans-serif !important;
     display: inline-block;
-    padding-top: 150px;
-    padding-left: 50px;
-    border: 2px red solid;
-
 }
 
+.AtF-content{ 
+    padding-top: 10px;
+    width: 60%;
+}
+
+.AtF-content h1{
+    margin-left: 10%;
+    padding-top: 50px;
+}
+
+/*CTA button*/
 .above-the-fold button{
     display:block;
     background-color: #bfd732;
-    border-radius: 40px;
+    border-radius: 25px;
     margin: auto;
     margin-top: 30px;
-    padding: 20px;
+    padding: 20px 30px;
     font-weight: 800;
     font-size: larger;
 }
 
-@media (max-width: 1000px) {
-    main{
-        background-position: center;
-    }
-} */
 
-#Main img{
+
+
+img{
     width: 100%;
 }
+

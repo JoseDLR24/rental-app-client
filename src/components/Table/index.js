@@ -36,6 +36,18 @@ const Table = () => {
                             <td>Barrie</td>
                             <td>Apartment</td>
                             <td>2 Bedrooms</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>Kijiji.ca</td>
@@ -43,6 +55,18 @@ const Table = () => {
                             <td>Barrie</td>
                             <td>Apartment</td>
                             <td>2 Bedrooms</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>Kijiji.ca</td>
@@ -50,6 +74,18 @@ const Table = () => {
                             <td>Barrie</td>
                             <td>Apartment</td>
                             <td>2 Bedrooms</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>Kijiji.ca</td>
@@ -57,6 +93,18 @@ const Table = () => {
                             <td>Barrie</td>
                             <td>Apartment</td>
                             <td>2 Bedrooms</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>Kijiji.ca</td>
@@ -64,6 +112,18 @@ const Table = () => {
                             <td>Barrie</td>
                             <td>Apartment</td>
                             <td>2 Bedrooms</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>Kijiji.ca</td>
@@ -71,6 +131,18 @@ const Table = () => {
                             <td>Barrie</td>
                             <td>Apartment</td>
                             <td>2 Bedrooms</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                     </tbody>
                 </table>

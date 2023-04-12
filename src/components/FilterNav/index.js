@@ -47,8 +47,8 @@ const FilterNav = () => {
 
     return (
     <div id="filternavcomponent">
-        <div class="filter-container">
-            <div class="dateCollected">
+        <div className="filter-container">
+            <div className="dateCollected">
                 <label htmlFor="date-input">Enter a date:</label>
                 <input
                     id="date-input"
@@ -78,8 +78,8 @@ const FilterNav = () => {
                 ))}
             </select>
 
-            <select class="form-select" aria-label="Default select example" name="rooms" id="rooms">
-                <option value="" selected disabled>Unit Size</option>
+            <select value={"1"} className="form-select" aria-label="Default select example" name="rooms" id="rooms">
+                <option value="" disabled>Unit Size</option>
                 <option value="1">1 Bed</option>
                 <option value="2">2 Bed</option>
                 <option value="3">3 Bed</option>
@@ -87,7 +87,7 @@ const FilterNav = () => {
                 <option value="4+ Bed">4+ Bed</option>
             </select>
         
-            <select class="form-select" aria-label="Default select example" name="utilities" id="utilitiesIncluded">
+            <select className="form-select" aria-label="Default select example" name="utilities" id="utilitiesIncluded">
                 <option value="" selected disabled>Utilities Inclduded</option>
                 <option value="yes">Yes</option>
                 <option value="not">No</option>
@@ -95,7 +95,7 @@ const FilterNav = () => {
 
             
         
-            <select class="form-select" aria-label="Default select example" name="Price" id="price">
+            <select className="form-select" aria-label="Default select example" name="Price" id="price">
                 <option value="" selected disabled>Price</option>
                 <option value="500">0 - 500</option>
                 <option value="1000">500 - 1000</option>
@@ -108,21 +108,21 @@ const FilterNav = () => {
             </select>
             <button>Update!</button>
         </div>
-    <div class="advanced-filters">
+    <div className="advanced-filters">
         
-        <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        <button className="btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             Advanced Filters
         </button>
         
-        <div class="collapse" id="collapseExample">
-            <div class="card card-body">
-                <select class="form-select" aria-label="Default select example" name="advanced-filters" id="secondarysuite">
+        <div className="collapse" id="collapseExample">
+            <div className="card card-body">
+                <select className="form-select" aria-label="Default select example" name="advanced-filters" id="secondarysuite">
                     <option value="" selected disabled>Secondary Suite</option>
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
                     <option value="Unclear">Unclear</option>
                 </select>
-                <select class="form-select" aria-label="Default select example" name="advanced-filters" id="typeofsecondarysuite">
+                <select className="form-select" aria-label="Default select example" name="advanced-filters" id="typeofsecondarysuite">
                     <option value="" selected disabled>Type of Secondary Suite</option>
                     <option value="Lower">Lower</option>
                     <option value="Upper">Upper</option>
@@ -130,7 +130,7 @@ const FilterNav = () => {
                     <option value="Res/Comm">Res/Comm</option>
                     <option value="Unclear">Unclear</option>
                 </select>
-                <select class="form-select" aria-label="Default select example" name="advanced-filters" id="landlordtype">
+                <select className="form-select" aria-label="Default select example" name="advanced-filters" id="landlordtype">
                     <option value="" selected disabled>Landlord Type</option>
                     <option value="P.Mgmt">P.Mgmt</option>
                     <option value="Private">Private</option>

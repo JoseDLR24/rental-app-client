@@ -1,61 +1,79 @@
-import React from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.min.js';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import React, { useEffect } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Loader from "../Loader";
 
-const Table = () => {
-    return(
-        <main class="scrappertable-container">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Resources</th>
-                        <th>Picture</th>
-                        <th>Location</th>
-                        <th>Type of house</th>
-                        <th>Number of Rooms</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Kijiji.ca</td>
-                        <td>picture</td>
-                        <td>Barrie</td>
-                        <td>Apartment</td>
-                        <td>2 Bedrooms</td>
-                    </tr>
-                    <tr>
-                        <td>Kijiji.ca</td>
-                        <td>picture</td>
-                        <td>Barrie</td>
-                        <td>Apartment</td>
-                        <td>2 Bedrooms</td>
-                    </tr>
-                    <tr>
-                        <td>Kijiji.ca</td>
-                        <td>picture</td>
-                        <td>Barrie</td>
-                        <td>Apartment</td>
-                        <td>2 Bedrooms</td>
-                    </tr>
-                    <tr>
-                        <td>Kijiji.ca</td>
-                        <td>picture</td>
-                        <td>Barrie</td>
-                        <td>Apartment</td>
-                        <td>2 Bedrooms</td>
-                    </tr>
-                    <tr>
-                        <td>Kijiji.ca</td>
-                        <td>picture</td>
-                        <td>Barrie</td>
-                        <td>Apartment</td>
-                        <td>2 Bedrooms</td>
-                    </tr>
-                </tbody>
-            </table>
-        </main>
-    );
+const Table = ({ data }) => {
+  // function to capitalize the first lettter in the value received
+  const capitalize = (value) => {
+    return value.charAt(0).toUpperCase() + value.slice(1);
+  };
+
+  const printTable = () => {
+    return data.map((e, i) => {
+      return (
+        <tr key={i}>
+          <td>{e.dateCollected}</td>
+          <td>{capitalize(e.monthCollected)}</td>
+          <td>{e.source.slice(8, e.source.length)}</td>
+          <td>{capitalize(e.municipality)}</td>
+          <td>{e.address || "unclear"}</td>
+          <td>{e.postCode || "Unclear"}</td>
+          <td>{capitalize(e.HousingType || "unclear")}</td>
+          <td>{capitalize(e.utilitiesIncluded)}</td>
+          <td>{e.unitSize}</td>
+          <td>{e.qtyBathrooms}</td>
+          <td>{capitalize(e.secondarySuite)}</td>
+          <td>{capitalize(e.typeSecondarySuite)}</td>
+          <td>{capitalize(e.landlordType)}</td>
+          <td>
+            {Number(e.totalCost).toLocaleString("en-US", {
+              style: "currency",
+              currency: "USD",
+              maximumFractionDigits: 0,
+            })}
+          </td>
+          <td>{capitalize(e.possibleDuplicate)}</td>
+          <td>{capitalize(e.stability)}</td>
+          <td>{e.urlAds}</td>
+        </tr>
+      );
+    });
+  };
+
+  return (
+    <main className="scrappertable-container">
+      <div className="table-wrapper">
+        {!data ? (
+          <Loader />
+        ) : (
+          <table className="table">
+            <thead>
+              <tr>
+                <th>Date Collected</th>
+                <th>Month Collected</th>
+                <th>Source</th>
+                <th>Local Municipality</th>
+                <th>Address</th>
+                <th>Postal Code</th>
+                <th>Housing Type</th>
+                <th>Utilities Included</th>
+                <th>Qty Rooms</th>
+                <th>Qty Bathrooms</th>
+                <th>Secondary Suite</th>
+                <th>Secondary Suite Type</th>
+                <th>Landlord Type</th>
+                <th>Monthly Price</th>
+                <th>Possible Duplicate</th>
+                <th>Stability</th>
+                <th>Ads Link</th>
+              </tr>
+            </thead>
+            <tbody>{printTable()}</tbody>
+          </table>
+        )}
+      </div>
+    </main>
+  );
 };
 
 export default Table;

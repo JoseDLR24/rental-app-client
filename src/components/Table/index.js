@@ -1,68 +1,76 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.min.js";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import Loader from "../Loader";
 
-const Table = () => {
-  const [getFullData, setGetFullData] = useState([]);
-
-  const getData = async () => {
-    try {
-      const response = await fetch(
-        "https://rental-server.onrender.com/api/v1/data"
-      );
-      if (response.ok) {
-        const data = await response.json();
-        setGetFullData(data);
-        console.log(data);
-      } else {
-        throw new Error("Network response was not ok.");
-      }
-    } catch (err) {
-      console.log(err);
-    }
+const Table = ({ data }) => {
+  // function to capitalize the first lettter in the value received
+  const capitalize = (value) => {
+    return value.charAt(0).toUpperCase() + value.slice(1);
   };
 
-  useEffect(() => {
-    getData();
-  }, []);
+  const printTable = () => {
+    return data.map((e, i) => {
+      return (
+        <tr key={i}>
+          <td>{e.dateCollected}</td>
+          <td>{capitalize(e.monthCollected)}</td>
+          <td>{e.source.slice(8, e.source.length)}</td>
+          <td>{capitalize(e.municipality)}</td>
+          <td>{e.address || "unclear"}</td>
+          <td>{e.postCode || "Unclear"}</td>
+          <td>{capitalize(e.HousingType || "unclear")}</td>
+          <td>{capitalize(e.utilitiesIncluded)}</td>
+          <td>{e.unitSize}</td>
+          <td>{e.qtyBathrooms}</td>
+          <td>{capitalize(e.secondarySuite)}</td>
+          <td>{capitalize(e.typeSecondarySuite)}</td>
+          <td>{capitalize(e.landlordType)}</td>
+          <td>
+            {Number(e.totalCost).toLocaleString("en-US", {
+              style: "currency",
+              currency: "USD",
+              maximumFractionDigits: 0,
+            })}
+          </td>
+          <td>{capitalize(e.possibleDuplicate)}</td>
+          <td>{capitalize(e.stability)}</td>
+          <td>{e.urlAds}</td>
+        </tr>
+      );
+    });
+  };
 
   return (
-    <main class="scrappertable-container">
-      <div class="table-wrapper">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Date Collected</th>
-              <th>Local Municipality</th>
-              <th>Housing Type</th>
-              <th>Street No.</th>
-              <th>Street Name</th>
-              <th>Street Type</th>
-              <th>Postal Code</th>
-              <th>Unit Size</th>
-              <th>Secondary Suite</th>
-              <th>Monthly Rent</th>
-              <th>Utilities Included</th>
-              <th>Add Hydro</th>
-              <th>Add Gas</th>
-              <th>Lease</th>
-              <th>Possible duplicate</th>
-            </tr>
-          </thead>
-          <tbody>
-            {getFullData.map((e) => {
-              return (
-                <tr>
-                  <td>{e.source}</td>
-                  <td>{e.municipality}</td>
-                  <td>{e.HousingType || 'unclear'}</td>
-
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+    <main className="scrappertable-container">
+      <div className="table-wrapper">
+        {!data ? (
+          <Loader />
+        ) : (
+          <table className="table">
+            <thead>
+              <tr>
+                <th>Date Collected</th>
+                <th>Month Collected</th>
+                <th>Source</th>
+                <th>Local Municipality</th>
+                <th>Address</th>
+                <th>Postal Code</th>
+                <th>Housing Type</th>
+                <th>Utilities Included</th>
+                <th>Qty Rooms</th>
+                <th>Qty Bathrooms</th>
+                <th>Secondary Suite</th>
+                <th>Secondary Suite Type</th>
+                <th>Landlord Type</th>
+                <th>Monthly Price</th>
+                <th>Possible Duplicate</th>
+                <th>Stability</th>
+                <th>Ads Link</th>
+              </tr>
+            </thead>
+            <tbody>{printTable()}</tbody>
+          </table>
+        )}
       </div>
     </main>
   );

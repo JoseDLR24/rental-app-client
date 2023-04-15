@@ -39,11 +39,21 @@ div.buttons-container {
 
 /* maring top for buttons container */
 #scrapper div.buttons-container {
-  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+#scrapper div.buttons-container button{
+  margin: 25px;
+  border-radius: 0;
+  border: none;
+  border-bottom: 0.1px solid #8cc63f ;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
 #scrapper div.buttons-container button.btn:hover {
   background-color: #8cc63f;
+  border: none;
   margin: none;
   color: white;
 }
@@ -87,6 +97,32 @@ div.buttons-container {
   animation: horizontal-shaking 0.5s infinite !important;
 }
 
+#scrapper .filter-container > button {
+  border: none;
+  border-radius: 5px;
+  padding: 6px;
+  width: 100px;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: #fff;
+  transition: all 0.2s ease-in ;
+}
+#scrapper .filter-container select {
+  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
+    rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+  cursor: pointer;
+}
+
+#scrapper .filter-container > button:hover{
+background-color: #537526;
+color: #fff;
+transition: all 0.2s ease-in ;
+}
+
+#scrapper .filter-container > button:hover, #scrapper .filter-container > select:hover {
+  transform: translateY(-1px);
+  transition: all 0.2s ease-in ;
+}
 @keyframes horizontal-shaking {
   0% {
     transform: translateX(0);

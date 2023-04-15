@@ -16,7 +16,7 @@ const Table = ({ data, getData }) => {
     let url = `https://rental-server.onrender.com/api/v1/data/?_id=${e}`;
 
     try {
-      const response = await fetch(url, {
+      await fetch(url, {
         method: "DELETE",
         headers: {
           "Content-type": "application/json",
@@ -69,7 +69,7 @@ const Table = ({ data, getData }) => {
 
   return (
     <main className="scrappertable-container">
-      <ToasterMessage/>
+      <ToasterMessage />
       <div className="table-wrapper">
         {!data ? (
           <Loader />

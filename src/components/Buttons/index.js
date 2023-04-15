@@ -6,7 +6,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 const ButtonContainer = () => {
     return(
         <div className="buttons-container">
-            <button type="button" className="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#confirmalert">RUN THE APP</button>
+            <button type="button" className="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#confirmalert">Run App</button>
 
             <div className="modal fade" id="confirmalert" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
@@ -20,13 +20,13 @@ const ButtonContainer = () => {
                     </div>
                     <div className="modal-footer">
                     <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" className="btn confirmbtn">I confirm</button>
+                    <button type="button" className="btn confirmbtn" data-bs-dismiss="modal">I confirm</button>
                     </div>
                 </div>
                 </div>
             </div>
-            <button type="button" className="btn btn-outline-dark">DOWNLOAD XLS</button>
-            <button type="button" className="btn btn-outline-dark">UPLOAD FILES</button>
+            <button type="button" className="btn btn-outline-dark">Download .xls</button>
+            <button type="button" className="btn btn-outline-dark">Upload .xls</button>
         </div>
     );
 };

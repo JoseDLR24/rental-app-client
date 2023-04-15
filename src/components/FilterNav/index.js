@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ToasterMessage from './../Toaster'
 import { toast } from "react-toastify";
+import {BsSearch} from "react-icons/bs"
 const FilterNav = ({ setData }) => {
   // variable to store the value of the municipality selected
   const [selectedLocation, setSelectedLocation] = useState("");
@@ -60,7 +61,7 @@ const FilterNav = ({ setData }) => {
       if (response.ok) {
         const data = await response.json();
         setData(data);
-        toast.success("TODO BIEN");
+        toast.success("Table Updated");
       } else {
         throw new Error("Network response was not ok.");
       }
@@ -146,7 +147,7 @@ const FilterNav = ({ setData }) => {
           <option value="3500">3000 - 3500</option>
           <option value="3500">3500+</option>
         </select>
-        <button onClick={getData}>Update!</button>
+        <button onClick={getData}>Search <BsSearch/></button>
       </div>
     </div>
   );

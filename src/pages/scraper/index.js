@@ -7,8 +7,6 @@ import Navigation from "../../components/Navigation";
 import "./style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 // js bootstrap
-import "bootstrap/dist/js/bootstrap.min.js";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 const Scraper = () => {
   // variable to save the all the records from the API

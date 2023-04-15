@@ -11,7 +11,10 @@ import "bootstrap/dist/js/bootstrap.min.js";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 const Scraper = () => {
+  // variable to save the all the records from the API
   const [data, setData] = useState(undefined);
+
+  // Function to fetch the API without filters
   const getData = async () => {
     try {
       const response = await fetch(
@@ -28,6 +31,8 @@ const Scraper = () => {
       console.log(err);
     }
   };
+
+  // Hook to call the getData function in the first render
   useEffect(() => {
     getData();
   }, []);
@@ -35,8 +40,8 @@ const Scraper = () => {
   return (
     <div id="scrapper">
       <h1>SCRAPER</h1>
-      <FilterNav setData={setData}/>
-      <Table data={data} getData={getData}/>
+      <FilterNav setData={setData} />
+      <Table data={data} getData={getData} />
       <ButtonContainer />
     </div>
   );

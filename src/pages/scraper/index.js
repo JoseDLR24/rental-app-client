@@ -8,13 +8,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const Scraper = () => {
   // variable to save the all the records from the API
   const [data, setData] = useState(undefined);
+  // Using ENV variable
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   // Function to fetch the API without filters
   const getData = async () => {
     try {
-      const response = await fetch(
-        "https://rental-server.onrender.com/api/v1/data"
-      );
+      // const response = await fetch("https://rental-server.onrender.com/api/v1/data");
+      const response = await fetch(`${apiUrl}/api/v1/data`);
       if (response.ok) {
         const data = await response.json();
         setData(data);

@@ -7,8 +7,10 @@ import { toast } from "react-toastify";
 const ButtonContainer = ({ getData, setData }) => {
   const [isDisabled, setIsDisabled] = useState(false);
 
+  const apiUrl = process.env.REACT_APP_API_URL;
+
   const runApp = async () => {
-    let url = `https://rental-server.onrender.com/api/v1/runapp`;
+    let url = `${apiUrl}/api/v1/runapp`;
     // turning on the loader
     setData(undefined);
     try {

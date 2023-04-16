@@ -3,6 +3,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import ToasterMessage from './../Toaster'
 import { toast } from "react-toastify";
 import {BsSearch} from "react-icons/bs"
+
+
+
 const FilterNav = ({ setData }) => {
   // variable to store the value of the municipality selected
   const [selectedLocation, setSelectedLocation] = useState("");
@@ -48,7 +51,10 @@ const FilterNav = ({ setData }) => {
 
   // Function to fetch the API with filters
   const getData = async () => {
-    const base = "https://rental-server.onrender.com/api/v1/data/?";
+    // Using ENV variable
+    const apiUrl = process.env.REACT_APP_API_URL;
+    // const base = "https://rental-server.onrender.com/api/v1/data/?";
+    const base = `${apiUrl}/api/v1/data/?`;
     let completedUrl = base;
     // Conditons to create url structure according to the data selectd b the user
     completedUrl += selectedLocation ? `municipality=${selectedLocation}&` : "";
@@ -56,6 +62,9 @@ const FilterNav = ({ setData }) => {
     completedUrl += selectedUtilities ? `utilitiesIncluded=${selectedUtilities}&`: "";
     completedUrl += selectedMonth && selectedMonth !== "all" ? `monthCollected=${selectedMonth}&` : "";
     completedUrl += selectedPrice ? `max=${selectedPrice}&min=${selectedPrice-500}` : "";
+
+    // Turning on the loader
+    setData(undefined);
     try {
       const response = await fetch(completedUrl);
       if (response.ok) {

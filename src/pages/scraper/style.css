@@ -68,7 +68,7 @@ div.buttons-container {
   overflow-x: auto;
   overflow-y: scroll;
   width: 100%;
-  height: 400px; /* Set a fixed height for the table wrapper */
+  height: 60vh; /* Set a fixed height for the table wrapper */
 }
 #scrapper table {
   border-collapse: collapse;

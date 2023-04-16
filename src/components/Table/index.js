@@ -6,6 +6,10 @@ import "react-toastify/dist/ReactToastify.css";
 import ToasterMessage from "../Toaster";
 
 const Table = ({ data, getData }) => {
+
+  // Using ENV variable
+  const apiUrl = process.env.REACT_APP_API_URL;
+
   // Function to capitalize the first lettter in the value received
   const capitalize = (value) => {
     return value.charAt(0).toUpperCase() + value.slice(1);
@@ -13,7 +17,8 @@ const Table = ({ data, getData }) => {
 
   // Function to delete a record
   const deleteRecord = async (e) => {
-    let url = `https://rental-server.onrender.com/api/v1/data/?_id=${e}`;
+    // let url = `https://rental-server.onrender.com/api/v1/data/?_id=${e}`;
+    let url = `${apiUrl}/api/v1/data/?_id=${e}`;
 
     try {
       await fetch(url, {
@@ -23,7 +28,7 @@ const Table = ({ data, getData }) => {
         },
       });
       toast.success("Record Deleted");
-      getData();
+      await getData();
     } catch (error) {
       toast.error("Error: ", error);
     }

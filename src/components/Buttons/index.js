@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import * as XLSX from 'xlsx';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
@@ -29,6 +30,39 @@ const ButtonContainer = ({ getData, setData }) => {
     } catch (error) {
       toast.error("Error: ", error);
     }
+  };
+
+  const [data, setInfo] = useState(undefined);
+
+  // Function to fetch the API without filters
+  const getInfo = async () => {
+    try {
+      const response = await fetch(
+        "https://rental-server.onrender.com/api/v1/data"
+      );
+      if (response.ok) {
+        const data = await response.json();
+        setInfo(data);
+        // console.log(data);
+      } else {
+        throw new Error("Network response was not ok.");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // Hook to call the getData function in the first render
+  useEffect(() => {
+    getInfo();
+  }, []);
+
+  // function to create the excel sheet
+  const exportToExcel = () => {
+    const worksheet = XLSX.utils.json_to_sheet(data);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
+    XLSX.writeFile(workbook, "data.xlsx");
   };
 
   return (
@@ -87,7 +121,11 @@ const ButtonContainer = ({ getData, setData }) => {
           </div>
         </div>
       </div>
-      <button type="button" className="btn btn-outline-dark">
+      <button
+        type="button"
+        onClick={exportToExcel}
+        className="btn btn-outline-dark"
+      >
         Download .xls
       </button>
       <button type="button" className="btn btn-outline-dark">

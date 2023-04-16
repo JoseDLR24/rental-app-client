@@ -23,7 +23,7 @@ const Table = ({ data, getData }) => {
         },
       });
       toast.success("Record Deleted");
-      getData();
+      await getData();
     } catch (error) {
       toast.error("Error: ", error);
     }

@@ -3,6 +3,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import ToasterMessage from './../Toaster'
 import { toast } from "react-toastify";
 import {BsSearch} from "react-icons/bs"
+
+
+
 const FilterNav = ({ setData }) => {
   // variable to store the value of the municipality selected
   const [selectedLocation, setSelectedLocation] = useState("");
@@ -56,6 +59,9 @@ const FilterNav = ({ setData }) => {
     completedUrl += selectedUtilities ? `utilitiesIncluded=${selectedUtilities}&`: "";
     completedUrl += selectedMonth && selectedMonth !== "all" ? `monthCollected=${selectedMonth}&` : "";
     completedUrl += selectedPrice ? `max=${selectedPrice}&min=${selectedPrice-500}` : "";
+
+    // Turning on the loader
+    setData(undefined);
     try {
       const response = await fetch(completedUrl);
       if (response.ok) {

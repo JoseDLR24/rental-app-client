@@ -3,6 +3,9 @@ import FilterNav from "../../components/FilterNav";
 import Table from "../../components/Table";
 import ButtonContainer from "../../components/Buttons";
 import Navigation from "../../components/Navigation";
+
+import * as XLSX from 'xlsx';
+
 // styles
 import "./style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -21,7 +24,7 @@ const Scraper = () => {
       if (response.ok) {
         const data = await response.json();
         setData(data);
-        console.log(data);
+        // console.log(data);
       } else {
         throw new Error("Network response was not ok.");
       }
@@ -33,7 +36,7 @@ const Scraper = () => {
   // Hook to call the getData function in the first render
   useEffect(() => {
     getData();
-  }, []);
+  }, []);  
 
   return (
     <div id="scrapper">

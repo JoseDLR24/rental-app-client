@@ -7,25 +7,24 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 const ButtonContainer = () => {
     
     // FOR THE UPLOAD BUTTON
-    // const [selectedFile, setSelectedFile] = useState(null);
+    const [selectedFile, setSelectedFile] = useState(null);
 
-    // const handleFileChange = (event) => {
-    //     setSelectedFile(event.target.files[0]);
-    // };
+    const handleFileChange = (event) => {
+        setSelectedFile(event.target.files[0]);
+    };
 
-    // const handleUpload = () => {
-    //     const formData = new FormData();
-    //     formData.append("file", selectedFile);
+    const handleUpload = () => {
+        const formData = new FormData();
+        formData.append("file", selectedFile);
 
-    //     fetch("http://localhost:5000/api/v1/runappfile", {
-    //         method: "POST",
-    //         body: formData,
-    //     })
-    //         .then((response) => response.json())
-    //         .then((data) => console.log(data))
-    //         .catch((error) => console.error(error));
-    // };
-    
+        fetch("http://localhost:5000/api/v1/runappfile", {
+            method: "POST",
+            body: formData,
+        })
+            .then((response) => response.json())
+            .then((data) => console.log(data))
+            .catch((error) => console.error(error));
+    };
     // variable to save the all the records from the API
     const [data, setData] = useState(undefined);
 

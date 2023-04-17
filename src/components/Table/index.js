@@ -66,7 +66,7 @@ const Table = ({ data, getData }) => {
           </td>
           <td>{capitalize(e.possibleDuplicate)}</td>
           <td>{capitalize(e.stability)}</td>
-          <td>{e.urlAds}</td>
+          <td>{e.source==="https://www.agsecure.ca" ? `https://www.agsecure.ca${e.urlAds}`: e.urlAds}</td>
         </tr>
       );
     });

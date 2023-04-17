@@ -38,7 +38,7 @@ const Scraper = () => {
       <h1>SCRAPER</h1>
       <FilterNav setData={setData} />
       <Table data={data} getData={getData} />
-      <ButtonContainer getData={getData} setData={setData} />
+      <ButtonContainer getData={getData} setData={setData} data={data} />
     </div>
   );
 };

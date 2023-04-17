@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from "react";
 import * as XLSX from 'xlsx';
+import axios from 'axios';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { toast } from "react-toastify";
 
-const ButtonContainer = ({ getData, setData }) => {
+const ButtonContainer = ({ getData, setData, data }) => {
   const [isDisabled, setIsDisabled] = useState(false);
 
   const apiUrl = process.env.REACT_APP_API_URL;
 
   const runApp = async () => {
     let url = `${apiUrl}/api/v1/runapp`;
+    
     // turning on the loader
     setData(undefined);
     try {
@@ -32,30 +34,6 @@ const ButtonContainer = ({ getData, setData }) => {
     }
   };
 
-  const [data, setInfo] = useState(undefined);
-
-  // Function to fetch the API without filters
-  const getInfo = async () => {
-    try {
-      const response = await fetch(
-        "https://rental-server.onrender.com/api/v1/data"
-      );
-      if (response.ok) {
-        const data = await response.json();
-        setInfo(data);
-        // console.log(data);
-      } else {
-        throw new Error("Network response was not ok.");
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  // Hook to call the getData function in the first render
-  useEffect(() => {
-    getInfo();
-  }, []);
 
   // function to create the excel sheet
   const exportToExcel = () => {
@@ -63,6 +41,28 @@ const ButtonContainer = ({ getData, setData }) => {
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
     XLSX.writeFile(workbook, "data.xlsx");
+  };
+
+  // declaring the file variable
+  const [file, setFile] = useState(null);
+
+  const handleFileUpload = async () => {
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    // Use axios to send the file to the server
+    try {
+      let url = `${apiUrl}/api/v1/runappfile`;
+      const response = await axios.post(url, formData);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleFileChange = (event) => {
+    setFile(event.target.files[0]);
   };
 
   return (
@@ -128,7 +128,8 @@ const ButtonContainer = ({ getData, setData }) => {
       >
         Download .xls
       </button>
-      <button type="button" className="btn btn-outline-dark">
+      <input type="file" onChange={handleFileChange} />
+      <button type="button" className="btn btn-outline-dark" onClick={handleFileUpload}>
         Upload .xls
       </button>
     </div>

@@ -15,7 +15,6 @@ const ButtonContainer = ({ getData, setData, data }) => {
 
   const runApp = async () => {
     let url = `${apiUrl}/api/v1/runapp`;
-
     // turning on the loader
     setData(undefined);
     try {
@@ -88,7 +87,7 @@ const ButtonContainer = ({ getData, setData, data }) => {
 
   return (
     <div className="buttons-container">
-     <ToasterMessage />
+      <ToasterMessage />
       <button
         disabled={isDisabled}
         type="button"
@@ -149,6 +148,7 @@ const ButtonContainer = ({ getData, setData, data }) => {
       >
         Download .xls
       </button>
+
       <button className="btn btn-outline-dark" id="upload">
         Upload .xls
         <input

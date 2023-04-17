@@ -5,7 +5,7 @@ import bgImage from "./images/about.jpg";
 
 const About = () => {
     return (
-        <section class="about" >
+        <section className="about" >
             <div id="background" style={{
             backgroundImage: `url(${bgImage})`,
             backgroundSize: "cover",
@@ -20,9 +20,9 @@ const About = () => {
             filter: "brightness(50%)"
           }}>
             </div>
-            <div class="htu-body">
+            <div className="htu-body">
                 <h1>ABOUT THIS APPLICATION</h1>
-                <hr class="pdivider" />
+                <hr className="pdivider" />
                 <p>Our web app is designed to simplify an automate the collection and organization of rental listing data in Simcoe County. It captures rental ads from multiple websites and saves the information in a database, creating an unique ID for each listing.
                 </p>
                 <p>The app captures important information such as the source website of the listing, date of posting, address, number of bedrooms, monthly rent, housing type, descriptions, utilities information, type of lease and a screenshot of the ad. With this data, County of Simcoe staff can easily create a monthly average rent report for different areas and unit sizes, saving both time and effort.</p>

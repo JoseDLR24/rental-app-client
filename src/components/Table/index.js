@@ -6,7 +6,6 @@ import "react-toastify/dist/ReactToastify.css";
 import ToasterMessage from "../Toaster";
 
 const Table = ({ data, getData }) => {
-
   // Using ENV variable
   const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -46,7 +45,11 @@ const Table = ({ data, getData }) => {
           </td>
           <td>{e.dateCollected}</td>
           <td>{capitalize(e.monthCollected)}</td>
-          <td>{e.source.slice(8, e.source.length)}</td>
+          <td>
+            {e.source !== "upload"
+              ? e.source.slice(8, e.source.length)
+              : "Upload"}
+          </td>
           <td>{capitalize(e.municipality)}</td>
           <td>{e.address || "unclear"}</td>
           <td>{e.postCode || "Unclear"}</td>
@@ -66,7 +69,11 @@ const Table = ({ data, getData }) => {
           </td>
           <td>{capitalize(e.possibleDuplicate)}</td>
           <td>{capitalize(e.stability)}</td>
-          <td>{e.source==="https://www.agsecure.ca" ? `https://www.agsecure.ca${e.urlAds}`: e.urlAds}</td>
+          <td>
+            {e.source === "https://www.agsecure.ca"
+              ? `https://www.agsecure.ca${e.urlAds}`
+              : e.urlAds}
+          </td>
         </tr>
       );
     });

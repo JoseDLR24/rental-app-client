@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
 import * as XLSX from "xlsx";
-import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { toast } from "react-toastify";
+import ToasterMessage from "../Toaster";
 
 const ButtonContainer = ({ getData, setData, data }) => {
   const [isDisabled, setIsDisabled] = useState(false);
+
+  const [fileSelected, setFileSelected] = useState("");
 
   const apiUrl = process.env.REACT_APP_API_URL;
 
   const runApp = async () => {
     let url = `${apiUrl}/api/v1/runapp`;
-
     // turning on the loader
     setData(undefined);
     try {
@@ -42,62 +43,51 @@ const ButtonContainer = ({ getData, setData, data }) => {
     XLSX.writeFile(workbook, "data.xlsx");
   };
 
-  // declaring the file variable
-  // const [file, setFile] = useState(null);
-
-  // const handleFileUpload = async () => {
-
-  //   const formData = new FormData();
-  //   formData.append('file', file);
-
-  //   // Use axios to send the file to the server
-  //   try {
-  //     let url = `${apiUrl}/api/v1/runappfile`;
-  //     const response = await axios.post(url, formData);
-  //     console.log(response.data);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
-  // const handleFileChange = (event) => {
-  //   setFile(event.target.files[0]);
-  // };
-
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
-    const reader = new FileReader();
+    let reader = new FileReader();
     let url = `${apiUrl}/api/v1/runappfile`;
 
-    reader.onload = async (event) => {
+    reader.onload = (event) => {
       const data = new Uint8Array(event.target.result);
       const workbook = XLSX.read(data, { type: "array" });
       const sheet_name_list = workbook.SheetNames;
-      const json = XLSX.utils.sheet_to_json(
-        workbook.Sheets[sheet_name_list[0]]
-      );
-      console.log(json); // log the JSON data to the console
+      const json = XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list]);
 
-      try {
-        let response = await fetch(url,
-          {
+      // Go through al the rows in the file .xls and sending them to server one by one
+      json.map(async (record) => {
+        // Cycle for convert all the values to string
+        for (let prop in record) {
+          if (record.hasOwnProperty(prop)) {
+            record[prop] = record[prop].toString(); // Convert the property value to the new type
+          }
+        }
+        // Harcoding source property as upload
+        record.source = "upload";
+        // turning on the loader
+        setData(undefined);
+        try {
+          await fetch(url, {
             method: "POST",
-            body: JSON.stringify(json),
+            body: JSON.stringify(record),
             headers: {
               "Content-type": "application/json; charset=UTF-8",
             },
-          }
-        );
-        console.log('Entreeeee', response);
-      } catch (error) {
-        console.log(error);
-      }
+          });
+        } catch (error) {
+          console.log(error);
+        }
+        await getData();
+      });
     };
+    setFileSelected("");
+    toast.success("File Uploaded ");
     reader.readAsArrayBuffer(file);
   };
 
   return (
     <div className="buttons-container">
+      <ToasterMessage />
       <button
         disabled={isDisabled}
         type="button"
@@ -107,7 +97,6 @@ const ButtonContainer = ({ getData, setData, data }) => {
       >
         Run App
       </button>
-
       <div
         className="modal fade"
         id="confirmalert"
@@ -159,9 +148,16 @@ const ButtonContainer = ({ getData, setData, data }) => {
       >
         Download .xls
       </button>
-      <input type="file" onChange={handleFileUpload} />
-      <button type="button" className="btn btn-outline-dark">
+
+      <button className="btn btn-outline-dark" id="upload">
         Upload .xls
+        <input
+          value={fileSelected}
+          type="file"
+          id="myfile"
+          name="myfile"
+          onChange={handleFileUpload}
+        />
       </button>
     </div>
   );

@@ -5,7 +5,7 @@ import bgImage from "./images/contact.jpg";
 
 const Contact = () => {
     return (
-        <section class="about" >
+        <section className="about" >
             <div id="background" style={{
             backgroundImage: `url(${bgImage})`,
             backgroundSize: "cover",
@@ -20,9 +20,9 @@ const Contact = () => {
             filter: "brightness(90%)"
           }}>
             </div>
-            <div class="htu-body">
+            <div className="htu-body">
                 <h1>CONTACT US</h1>
-                <hr class="pdivider" />
+                <hr className="pdivider" />
                 <p>Irena Pozgaj - Jones: <a href="mailto:irena.pozgajjones@georgiancollege.ca">irena.pozgajjones@georgiancollege.ca</a></p>
                 <p>Shaun Alfonso: <a href="mailto:shaun.alfonso@georgiancollege.ca">shaun.alfonso@georgiancollege.ca</a></p>
                 <p>Alexis Tennent: <a href="mailto:alexis.tennent@georgiancollege.ca">alexis.tennent@georgiancollege.ca</a></p>

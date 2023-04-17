@@ -1,35 +1,62 @@
-  .above-the-fold{
+.above-the-fold {
     color: #f0f0f0 !important;
     font-family: 'Lexend Deca', sans-serif !important;
     display: inline-block;
 }
 
-.AtF-content{ 
+.AtF-content {
     padding-top: 10px;
+    width: 60%;
+    margin-top: 150px;
+}
+
+.AtF-content h1 {
+    margin-left: 10%;
+    padding-top: 50px;
+    margin-top: 130px;
     width: 60%;
 }
 
-.AtF-content h1{
-    margin-left: 10%;
-    padding-top: 50px;
-}
-
 /*CTA button*/
-.above-the-fold button{
-    display:block;
-    background-color: #bfd732;
-    border-radius: 25px;
+.above-the-fold button {
+    display: block;
+    border-radius: 15px;
     margin: auto;
     margin-top: 30px;
-    padding: 20px 30px;
+    padding: 15px 50px;
     font-weight: 800;
     font-size: larger;
+    border: 1px solid white;
+    color: white;
+    letter-spacing: 0.9px;
+    background-color: #50cfe7;
+    transition: all 0.3s ease-in;
+}
+
+.above-the-fold button:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    border: 2px solid white;
+    color: #50cfe7;
+    background-color: white;
+    transition: all 0.3s ease-in;
+}
+
+section.above-the-fold .AtF-bg {
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    opacity: 0.9;
 }
 
 
 
 
-img{
-    width: 100%;
-}
 
+img {
+    width: 60%;
+}

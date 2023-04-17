@@ -1,6 +1,6 @@
 #Navigation img{
     margin-left: 10px;
-    height: 60px;
+    width: 69px;
 }
 
 #Navigation li a{
@@ -8,6 +8,10 @@
     font-family: 'Lexend Deca', sans-serif !important;
     text-decoration: none;
     padding-right: 16px;
+}
+
+#Navigation li a:hover{
+    text-decoration: underline;
 }
 
 #Navigation #contact-btn{

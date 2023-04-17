@@ -22,12 +22,12 @@ const Navigation = () => {
           aria-controls="collapsable"
           aria-expanded={open}
           aria-label="Toggle navigation"
-          onClick={()=>setOpen(!open) }
+          onClick={() => setOpen(!open)}
         >
           <span className="navbar-toggler-icon"></span>
         </button>
         {/* <div className={`collapse navbar-collapse ${open?"show":""}`} > */}
-        
+
         <Collapse in={open} className="navbar-collapse">
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             <li className="nav-item">
@@ -39,12 +39,7 @@ const Navigation = () => {
             <li className="nav-item">
               <NavLink to="/how-to-use">How to use</NavLink>
             </li>
-            <li className="nav-item contact">
-              <NavLink to="/contact">Contact us</NavLink>
-            </li>
-            <NavLink to="/contact">
-              <button id="contact-btn">Contact Us</button>
-            </NavLink>
+
           </ul>
         </Collapse>
       </div>

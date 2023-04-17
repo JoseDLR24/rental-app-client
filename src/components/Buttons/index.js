@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from "react";
-import * as XLSX from 'xlsx';
+import * as XLSX from "xlsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { toast } from "react-toastify";
+import ToasterMessage from "../Toaster";
 
-const ButtonContainer = ({ getData, setData }) => {
+const ButtonContainer = ({ getData, setData, data }) => {
   const [isDisabled, setIsDisabled] = useState(false);
+
+  const [fileSelected, setFileSelected] = useState("");
 
   const apiUrl = process.env.REACT_APP_API_URL;
 
   const runApp = async () => {
     let url = `${apiUrl}/api/v1/runapp`;
+
     // turning on the loader
     setData(undefined);
     try {
@@ -32,31 +36,6 @@ const ButtonContainer = ({ getData, setData }) => {
     }
   };
 
-  const [data, setInfo] = useState(undefined);
-
-  // Function to fetch the API without filters
-  const getInfo = async () => {
-    try {
-      const response = await fetch(
-        "https://rental-server.onrender.com/api/v1/data"
-      );
-      if (response.ok) {
-        const data = await response.json();
-        setInfo(data);
-        // console.log(data);
-      } else {
-        throw new Error("Network response was not ok.");
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  // Hook to call the getData function in the first render
-  useEffect(() => {
-    getInfo();
-  }, []);
-
   // function to create the excel sheet
   const exportToExcel = () => {
     const worksheet = XLSX.utils.json_to_sheet(data);
@@ -65,8 +44,51 @@ const ButtonContainer = ({ getData, setData }) => {
     XLSX.writeFile(workbook, "data.xlsx");
   };
 
+  const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    let reader = new FileReader();
+    let url = `${apiUrl}/api/v1/runappfile`;
+
+    reader.onload = (event) => {
+      const data = new Uint8Array(event.target.result);
+      const workbook = XLSX.read(data, { type: "array" });
+      const sheet_name_list = workbook.SheetNames;
+      const json = XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list]);
+
+      // Go through al the rows in the file .xls and sending them to server one by one
+      json.map(async (record) => {
+        // Cycle for convert all the values to string
+        for (let prop in record) {
+          if (record.hasOwnProperty(prop)) {
+            record[prop] = record[prop].toString(); // Convert the property value to the new type
+          }
+        }
+        // Harcoding source property as upload
+        record.source = "upload";
+        // turning on the loader
+        setData(undefined);
+        try {
+          await fetch(url, {
+            method: "POST",
+            body: JSON.stringify(record),
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+            },
+          });
+        } catch (error) {
+          console.log(error);
+        }
+        await getData();
+      });
+    };
+    setFileSelected("");
+    toast.success("File Uploaded ");
+    reader.readAsArrayBuffer(file);
+  };
+
   return (
     <div className="buttons-container">
+     <ToasterMessage />
       <button
         disabled={isDisabled}
         type="button"
@@ -76,7 +98,6 @@ const ButtonContainer = ({ getData, setData }) => {
       >
         Run App
       </button>
-
       <div
         className="modal fade"
         id="confirmalert"
@@ -128,8 +149,15 @@ const ButtonContainer = ({ getData, setData }) => {
       >
         Download .xls
       </button>
-      <button type="button" className="btn btn-outline-dark">
+      <button className="btn btn-outline-dark" id="upload">
         Upload .xls
+        <input
+          value={fileSelected}
+          type="file"
+          id="myfile"
+          name="myfile"
+          onChange={handleFileUpload}
+        />
       </button>
     </div>
   );

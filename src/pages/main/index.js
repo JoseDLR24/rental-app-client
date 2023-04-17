@@ -7,8 +7,8 @@ import { Link } from 'react-router-dom';
 
 const Main = () => {
   return (
-    <section class="above-the-fold container-fluid">
-      <div class="AtF-bg" style={{
+    <section className="above-the-fold container-fluid">
+      <div className="AtF-bg" style={{
         backgroundImage: `url(${bgImage})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
@@ -22,7 +22,7 @@ const Main = () => {
         opacity: "0.9",
         filter: "blur(2px)"
       }}></div>
-      <div class="AtF-content">
+      <div className="AtF-content">
         <img src={aboveTheFold} alt="CCSI logo and Slogan Affordable Housing lab" />
         <h1>
           Effortlessly track and analyze local rental markets

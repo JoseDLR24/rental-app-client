@@ -43,12 +43,16 @@ div.buttons-container {
   justify-content: center;
 }
 
-#scrapper div.buttons-container button{
+#scrapper div.buttons-container button {
   margin: 25px;
   border-radius: 0;
   border: none;
-  border-bottom: 0.1px solid #8cc63f ;
+  border-bottom: 0.1px solid #8cc63f;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #scrapper div.buttons-container button.btn:hover {
@@ -105,7 +109,7 @@ div.buttons-container {
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   background-color: #fff;
-  transition: all 0.2s ease-in ;
+  transition: all 0.2s ease-in;
 }
 #scrapper .filter-container select {
   box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
@@ -113,16 +117,26 @@ div.buttons-container {
   cursor: pointer;
 }
 
-#scrapper .filter-container > button:hover{
-background-color: #537526;
-color: #fff;
-transition: all 0.2s ease-in ;
+#scrapper .filter-container > button:hover {
+  background-color: #537526;
+  color: #fff;
+  transition: all 0.2s ease-in;
 }
 
-#scrapper .filter-container > button:hover, #scrapper .filter-container > select:hover {
+#scrapper .filter-container > button:hover,
+#scrapper .filter-container > select:hover {
   transform: translateY(-1px);
-  transition: all 0.2s ease-in ;
+  transition: all 0.2s ease-in;
 }
+
+#scrapper button#upload input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
 @keyframes horizontal-shaking {
   0% {
     transform: translateX(0);
@@ -139,4 +153,8 @@ transition: all 0.2s ease-in ;
   100% {
     transform: translateX(0);
   }
+}
+
+#scrapper #uploadFile input {
+  display: none;
 }

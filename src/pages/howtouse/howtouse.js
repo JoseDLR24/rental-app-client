@@ -6,7 +6,7 @@ import bgImage from "./images/how-to-use-bg.jpg";
 
 const HowToUse = () => {
     return (
-        <section class="howtouse" >
+        <section className="howtouse" >
             <div id="background" style={{
             backgroundImage: `url(${bgImage})`,
             backgroundSize: "cover",
@@ -20,9 +20,9 @@ const HowToUse = () => {
             zIndex: "-1",
           }}>
             </div>
-            <div class="htu-body">
+            <div className="htu-body">
                 <h1>HOW TO USE</h1>
-                <hr class="pdivider" />
+                <hr className="pdivider" />
                 <p>To retrieve the latest information from the database, simply press the "Search" button. This function will return all the data that's been saved in the DB. If you've applied any filters, the search will be based on them. Otherwise, it will bring back all the information.
                 </p>
                 <p>If you want to upload information from a .xls file into the DB, just click the "Upload File" button. Once you've selected your file from your device, the upload will start automatically. The app will extract the data from the file and save it into the database.</p>

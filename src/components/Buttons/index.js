@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import * as XLSX from 'xlsx';
-import axios from 'axios';
+import * as XLSX from "xlsx";
+import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
@@ -13,7 +13,7 @@ const ButtonContainer = ({ getData, setData, data }) => {
 
   const runApp = async () => {
     let url = `${apiUrl}/api/v1/runapp`;
-    
+
     // turning on the loader
     setData(undefined);
     try {
@@ -34,7 +34,6 @@ const ButtonContainer = ({ getData, setData, data }) => {
     }
   };
 
-
   // function to create the excel sheet
   const exportToExcel = () => {
     const worksheet = XLSX.utils.json_to_sheet(data);
@@ -44,25 +43,57 @@ const ButtonContainer = ({ getData, setData, data }) => {
   };
 
   // declaring the file variable
-  const [file, setFile] = useState(null);
+  // const [file, setFile] = useState(null);
 
-  const handleFileUpload = async () => {
+  // const handleFileUpload = async () => {
 
-    const formData = new FormData();
-    formData.append('file', file);
+  //   const formData = new FormData();
+  //   formData.append('file', file);
 
-    // Use axios to send the file to the server
-    try {
-      let url = `${apiUrl}/api/v1/runappfile`;
-      const response = await axios.post(url, formData);
-      console.log(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  //   // Use axios to send the file to the server
+  //   try {
+  //     let url = `${apiUrl}/api/v1/runappfile`;
+  //     const response = await axios.post(url, formData);
+  //     console.log(response.data);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
-  const handleFileChange = (event) => {
-    setFile(event.target.files[0]);
+  // const handleFileChange = (event) => {
+  //   setFile(event.target.files[0]);
+  // };
+
+  const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    let url = `${apiUrl}/api/v1/runappfile`;
+
+    reader.onload = async (event) => {
+      const data = new Uint8Array(event.target.result);
+      const workbook = XLSX.read(data, { type: "array" });
+      const sheet_name_list = workbook.SheetNames;
+      const json = XLSX.utils.sheet_to_json(
+        workbook.Sheets[sheet_name_list[0]]
+      );
+      console.log(json); // log the JSON data to the console
+
+      try {
+        let response = await fetch(url,
+          {
+            method: "POST",
+            body: JSON.stringify(json),
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+            },
+          }
+        );
+        console.log('Entreeeee', response);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    reader.readAsArrayBuffer(file);
   };
 
   return (
@@ -128,8 +159,8 @@ const ButtonContainer = ({ getData, setData, data }) => {
       >
         Download .xls
       </button>
-      <input type="file" onChange={handleFileChange} />
-      <button type="button" className="btn btn-outline-dark" onClick={handleFileUpload}>
+      <input type="file" onChange={handleFileUpload} />
+      <button type="button" className="btn btn-outline-dark">
         Upload .xls
       </button>
     </div>

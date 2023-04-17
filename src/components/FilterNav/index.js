@@ -22,7 +22,7 @@ const FilterNav = ({ setData }) => {
     { value: "barrie", text: "Barrie" },
     { value: "bradford", text: "Bradford" },
     { value: "collingwood", text: "Collingwood" },
-    { value: "friday", text: "Friday" },
+    { value: "friday-harbour", text: "Friday" },
     { value: "innisfil", text: "Innisfil" },
     { value: "newTecumsetch", text: "NewTecumsetch" },
     { value: "midland", text: "Midland" },

@@ -1,70 +1,62 @@
-# Getting Started with Create React App
+# Getting Started with our Rental Data Scraper
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was built to allow CCSI to collect data reliably and faster from their desired rental websites, to allow them to create an accurate report on the housing status of simcoe county. Currently, we extract the data from three sources: Shoreline Property Management, AG secure Property management and Listanza.
 
-## Available Scripts
+## How to use:
 
-In the project directory, you can run:
+Go to https://rentalapp-6cca3.web.app/ and access the website.
+Click on "Scraper"
+On the bottom left part, click the button "Run App"
+Wait until the data is fetched and displayed on the table.
 
-### `npm start`
+## Using the filter
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+For advanced filters, just select one of the buttons on the top part of the table and choose a value to filter the data. 
+The first button allows you to filter data by the month it was fetched using our solution. So for instance, if you clicked the "Run App" button in january, you can select the filter value "January" to display the data that was gathered that month, even if the app was run multiple times that month.
+The second button filters the values by one of the pre-determined locations.
+The third button filters the data by the number of bedrooms listed on the AD.
+The fourth button filters the data by 
+The fifth button filter the data by a pre-determined price range listed on the AD.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+To apply multiple filters, just select a value for the multiple buttons listed above.
+When you are done selecting, click on the "Search" button on the top right to filter the data.
 
-### `npm test`
+## Download Data
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To Download the data displayed on the table with the currently used filter, just click the second button on the bottom, called "Download .xls". This will download the table into a .XLS file spreadsheet.
 
-### `npm run build`
+## Upload custom Data
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To Upload custom data from other sources, first it is important to save it into a spreadsheet in .XLS format. Second, all data must be organized into unique cells following the patern: 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The first row must be the header of the columns. They must be on the following order: address, dateCollecter, municipality, HousingTypo, unitSize, qtyBathrooms, secondarySuite, typeSecondarySuite, monthCollected, utilitiesIncluded, possibleDuplicate, totalCost, postCode, landlordType, stability.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Data type per cell:
 
-### `npm run eject`
+address: any string or "unclear" for no data
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+dateCollected: date in the mm/dd/yyyy format or "unclear" for no data
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Housing Type: any string or "unclear" for no data
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+unitSize: 0 or any natural number
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+qtyBathroom: 0 or any natural number
 
-## Learn More
+secondarySuite: any string or "unclear" for no data
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+typeSecondarySuite: any string or "unclear" for no data
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+monthCollected: date in the mm/dd/yyyy format or "unclear" for no data
 
-### Code Splitting
+utilitiesIncluded: "yes" or "no"
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+possibleDuplicate: "yes", "no", or "unclear" for no data
 
-### Analyzing the Bundle Size
+totalCost: 0 or any positive number, with cents separated with a "."
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+postCode: 6 characters string with number and characters
 
-### Making a Progressive Web App
+landlordType: any string or "unclear" for no data
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+stability:  any string or "unclear" for no data

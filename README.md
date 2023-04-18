@@ -4,7 +4,7 @@ This project was built to allow CCSI to collect data reliably and faster from th
 
 ## How to use:
 
-Go to LINK and access the website.
+Go to https://rentalapp-6cca3.web.app/ and access the website.
 Click on "Scraper"
 On the bottom left part, click the button "Run App"
 Wait until the data is fetched and displayed on the table.
@@ -34,16 +34,29 @@ The first row must be the header of the columns. They must be on the following o
 Data type per cell:
 
 address: any string or "unclear" for no data
+
 dateCollected: date in the mm/dd/yyyy format or "unclear" for no data
+
 Housing Type: any string or "unclear" for no data
+
 unitSize: 0 or any natural number
+
 qtyBathroom: 0 or any natural number
+
 secondarySuite: any string or "unclear" for no data
+
 typeSecondarySuite: any string or "unclear" for no data
+
 monthCollected: date in the mm/dd/yyyy format or "unclear" for no data
+
 utilitiesIncluded: "yes" or "no"
+
 possibleDuplicate: "yes", "no", or "unclear" for no data
+
 totalCost: 0 or any positive number, with cents separated with a "."
+
 postCode: 6 characters string with number and characters
+
 landlordType: any string or "unclear" for no data
+
 stability:  any string or "unclear" for no data

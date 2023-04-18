@@ -1,4 +1,4 @@
-# Getting Started with our Rental Data Scraped
+# Getting Started with our Rental Data Scraper
 
 This project was built to allow CCSI to collect data reliably and faster from their desired rental websites, to allow them to create an accurate report on the housing status of simcoe county. Currently, we extract the data from three sources: Shoreline Property Management, AG secure Property management and Listanza.
 

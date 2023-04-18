@@ -17,7 +17,8 @@ const Contact = () => {
             right: "0",
             bottom: "0",
             zIndex: "-1",
-            filter: "brightness(90%)"
+            filter: "brightness(90%)",
+            height: "140vh",
           }}>
             </div>
             <div className="htu-body">

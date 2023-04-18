@@ -18,6 +18,7 @@ const HowToUse = () => {
             right: "0",
             bottom: "0",
             zIndex: "-1",
+            height: "140vh",
           }}>
             </div>
             <div className="htu-body">

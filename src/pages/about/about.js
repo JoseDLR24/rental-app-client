@@ -17,7 +17,8 @@ const About = () => {
             right: "0",
             bottom: "0",
             zIndex: "-1",
-            filter: "brightness(50%)"
+            filter: "brightness(50%)",
+            height: "120vh",
           }}>
             </div>
             <div className="htu-body">

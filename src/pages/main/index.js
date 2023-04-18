@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const Main = () => {
   return (
     <section className="above-the-fold container-fluid">
-      <div className="AtF-bg"  style={{backgroundImage: `url(${bgImage})`}}></div>
+      <div className="AtF-bg"  style={{backgroundImage: `url(${bgImage})`, height: "120vh"}}></div>
       <div className="AtF-content">
         <img src={aboveTheFold} alt="CCSI logo and Slogan Affordable Housing lab" />
         <h1>
